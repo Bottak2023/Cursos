@@ -39,13 +39,13 @@ export default function Home() {
         backgroundSize: 'cover'
       }}>
 
-      <div className='w-screen h-screen bg-gradient-to-t from-[#00061860] to-[#000618d1] flex flex-col justify-center items-center  z-[50]'>
+      <div className='w-screen h-screen flex flex-col justify-center items-center  z-[50]'>
 
         {/* <video  className='absolute top-0  w-full min-h-[100vh] object-cover z-10' autoPlay loop muted playsInline>
       <source src='underwater.mp4' type="video/mp4" />
     </video>  */}
         {/* <img src="/truck.png"  className='absolute  w-screen h-screen  object-cover lg:hidden' alt="" /> */}
-        <img src="/airplane-bg.jpg" className='absolute  w-screen h-screen  object-cover ' alt="" />
+        {/* <img src="/airplane-bg.jpg" className='absolute  w-screen h-screen  object-cover ' alt="" /> */}
 
         <form className={`space-y-6 lg:space-y-3 w-[100%] rounded-[30px] max-w-[350px] z-10 lg:scale-110`} onSubmit={signInHandler} >
           <div className='w-full text-center flex justify-center'>
