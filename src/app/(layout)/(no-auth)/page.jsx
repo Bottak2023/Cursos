@@ -370,7 +370,7 @@ export default function Home() {
                 {/* <Translator from='es' to={languaje.slice(0, 2).toLowerCase()}>
                   {parse(cliente.inicio.content)}
                 </Translator> */}
-BOTTAK es una innovadora plataforma de aprendizaje online dedicada a ofrecer educación de vanguardia en el ámbito de las criptomonedas y la tecnología blockchain. Nuestro objetivo es brindarte una experiencia educativa única y enriquecedora que combine flexibilidad, accesibilidad y contenido de alta calidad.
+                BOTTAK es una innovadora plataforma de aprendizaje online dedicada a ofrecer educación de vanguardia en el ámbito de las criptomonedas y la tecnología blockchain. Nuestro objetivo es brindarte una experiencia educativa única y enriquecedora que combine flexibilidad, accesibilidad y contenido de alta calidad.
               </p>
             </ScrollAnimation>
 

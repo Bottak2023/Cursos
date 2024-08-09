@@ -21,10 +21,12 @@ import Subtitle from '@/components/Subtitle'
 
 
 const Button = ({ url, children, src }) => {
-  return <button className='bg-[#ffbd2f] w-[150px] sm:w-[200px] lg:w-[250px] flex flex-col justify-self-center justify-center items-center  p-2 rounded-[5px]  m-3'>
-    <img src={src} className='w-[100px]' alt="" />
-    <Link href={`/Admin/Edit/Section?item=${url}`} className='font-medium'> {children}</Link>
-  </button>
+  return <Link href={`/Admin/Edit/Section?item=${url}`} className='font-medium'>
+    <button className='bg-[#ffbd2f] w-[150px] sm:w-[200px] lg:w-[250px] flex flex-col justify-self-center justify-center items-center  p-2 rounded-[5px]  m-3'>
+      <img src={src} className='w-[100px]' alt="" />
+      {children}
+    </button>
+  </Link>
 }
 export default function Home() {
 
@@ -55,11 +57,11 @@ export default function Home() {
 
       <div className='relative  pt-[100px] pb-[200px]  bg-gradient-to-t from-[#00061860] to-[#000618d1]  lg: pb-[100px] lg:pb-0  min-h-screen lg:py-[50px] flex flex-col justify-center z-10 '>
         <div className='flex justify-center pb-12'>
-        <img src="/favicon.png" className='min-w-[200px] w-[15vw]' alt="User" />
+          <img src="/favicon.png" className='min-w-[200px] w-[15vw]' alt="User" />
         </div>
 
         <div className='relative   z-10  grid grid-cols-2 sm:grid-cols-3 '>
-        <Button url='cursos' src="/icons/TERRESTRE.png" >Cursos  </Button>
+          <Button url='cursos' src="/icons/TERRESTRE.png" >Cursos  </Button>
 
           {/* <Button url='inicio' src="/icons/HOME.png" >Inicio</Button>
           <Button url='terrestre' src="/icons/TERRESTRE.png" >Transporte Terrestre  </Button>
