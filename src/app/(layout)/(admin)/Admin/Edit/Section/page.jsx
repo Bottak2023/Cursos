@@ -24,15 +24,14 @@ function NavSection() {
         if (window && typeof window !== "undefined") {
             setQuery(window.location.href.split('=')[1])
         }
-        setOption('Tarjetas')
     }, [cliente])
     return (
         <div className='w-full'>
             <ul className="flex border-b border-[blue] ">
-                {/* <li className={`-mb-px mr-1 ${option === 'Seccion' && 'bg-[#ffd900] border border-[blue] border-b-transparent'}`} onClick={() => setOption('Seccion')}>
+                <li className={`-mb-px mr-1 ${option === 'Seccion' && 'bg-[#ffd900] border border-[blue] border-b-transparent'}`} onClick={() => setOption('Seccion')}>
                     <span className=" inline-block rounded-t py-2 px-2 text-blue-700 font-semibold" href="#">Seccion</span>
                 </li>
-                <li className={`-mb-px mr-1 ${option === 'MiniTarjetas' && 'bg-[#ffd900] border border-[blue] border-b-transparent'}`} onClick={() => setOption('MiniTarjetas')}>
+                {/* <li className={`-mb-px mr-1 ${option === 'MiniTarjetas' && 'bg-[#ffd900] border border-[blue] border-b-transparent'}`} onClick={() => setOption('MiniTarjetas')}>
                     <span className=" inline-block rounded-t py-2 px-2 text-blue-500 font-semibold" href="#">MiniTarjetas</span>
                 </li> */}
                 {query !== 'inicio' && <li className={`-mb-px mr-1 ${option === 'Tarjetas' && 'bg-[#ffd900] border border-[blue] border-b-transparent'}`} onClick={() => setOption('Tarjetas')}>
@@ -103,7 +102,7 @@ export default function Home() {
         if (window && typeof window !== "undefined") {
             setQuery(window.location.href.split('=')[1])
         }
-    }, [cliente,option])
+    }, [cliente, option])
     return (
         <div className="min-h-full">
             <img src="/airplane-bg.jpg" className='fixed  w-screen h-screen  object-cover  ' alt="" />
@@ -112,21 +111,18 @@ export default function Home() {
                     <div className="absolute w-[50px] top-5 right-5 text-white p-1 rounded-tl-lg rounded-br-lg text-center bg-red-600" onClick={close}>
                         X
                     </div>
-                    {query !== 'contactos' && query !== 'experiencia' && query !== 'solucionesIT' &&<>
+                    {query !== 'contactos' && query !== 'experiencia' && query !== 'solucionesIT' && <>
                         <NavSection />
-                        {/* {option === 'Seccion' && <SectionEdit />}
-                        {option === 'MiniTarjetas' && <MiniTarjetasEdit />} 
-                        {option === 'Tarjetas' && <TarjetasEdit />}*/}
-                         <TarjetasEdit />
-
+                        {option === 'Seccion' && <SectionEdit />}
+                        {/* {option === 'MiniTarjetas' && <MiniTarjetasEdit />} */}
+                        {option === 'Tarjetas' && <TarjetasEdit />}
+                        {/* <TarjetasEdit /> */}
                     </>}
-                    {query !== 'contactos' && query !== 'experiencia'&& query === 'solucionesIT' && <>
+                    {query !== 'contactos' && query !== 'experiencia' && query === 'solucionesIT' && <>
                         <NavSection />
                         {option === 'Seccion' && <SectionEdit />}
                         {option === 'MiniTarjetas' && <MiniTarjetasEdit />}
-                        {option === 'Tarjetas' && <TarjetasEdit4 />
-                        }
-
+                        {option === 'Tarjetas' && <TarjetasEdit4 /> }
                     </>}
                     {query === 'experiencia' && query !== 'solucionesIT' && <>
                         <NavSection2 />

@@ -370,8 +370,7 @@ export default function Home() {
                 {/* <Translator from='es' to={languaje.slice(0, 2).toLowerCase()}>
                   {parse(cliente.inicio.content)}
                 </Translator> */}
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid molestiae, numquam, sit officia quidem quasi placeat deserunt voluptate illum provident quas recusandae, quia velit fugit laboriosam animi tenetur repudiandae! Quaerat.
-
+BOTTAK es una innovadora plataforma de aprendizaje online dedicada a ofrecer educación de vanguardia en el ámbito de las criptomonedas y la tecnología blockchain. Nuestro objetivo es brindarte una experiencia educativa única y enriquecedora que combine flexibilidad, accesibilidad y contenido de alta calidad.
               </p>
             </ScrollAnimation>
 
@@ -491,8 +490,8 @@ export default function Home() {
 
 
       {cliente['cursos'] && <Section
-        subtitle={'Cursos Bottak'} subtitleEN={cliente['cursos'].tituloEN}
-        description={'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid molestiae, numquam, sit officia quidem quasi placeat deserunt voluptate illum provident quas recusandae, quia velit fugit laboriosam animi tenetur repudiandae! Quaerat.'} descriptionEN={cliente['cursos'].contentEN}
+        subtitle={cliente['cursos'].titulo} subtitleEN={cliente['cursos'].tituloEN}
+        description={cliente['cursos'].content} descriptionEN={cliente['cursos'].contentEN}
         video={cliente['cursos'].url} degrade='#00000067' tarjetas={cliente['cursos'].tarjetas} miniTarjetas={cliente['cursos'].miniTarjetas} id={'cursos'}></Section>}
 
       {cliente['resursos'] && <Section

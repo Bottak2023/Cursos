@@ -22,7 +22,7 @@ export default function Home() {
     function saveFrontPage(e) {
         e.preventDefault()
         setUserSuccess('Cargando')
-        writeUserData(`/Cliente/${query}`, { ...data, content: textEditor, contentEN: textEditor2  }, setUserSuccess)
+        writeUserData(`/Cliente/${query}`, { ...data, content: textEditor }, setUserSuccess)
     }
 
     useEffect(() => {
@@ -48,24 +48,24 @@ export default function Home() {
         option === 'Seccion' && <form className="relative  pt-5" onSubmit={saveFrontPage} >
             <div className="col-span-full">
                 <h2 className="text-base font-bold leading-7 text-gray-900  text-center p-5 ">ADMINISTRAR SECCIONES</h2>
-                <div className='flex justify-center p-5'>
+                {/* <div className='flex justify-center p-5'>
                     <Suspense >
                         <video src={data && data.url && data.url ? data.url : (cliente && cliente[query] && cliente[query].url)} className='h-[300px]' autoPlay loop muted playsInline ></video>
                     </Suspense >
-                </div>
+                </div> */}
             </div>
-            <div className="sm:col-span-3">
+            {/* <div className="sm:col-span-3">
                 <label htmlFor="last-name" className="block text-[12px] font-medium leading-6 text-gray-900">Subir Video por URL</label>
                 <input type="text" name="url" onChange={onChangeHandler} className="block w-full rounded-md border-0 p-1.5 mt-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-[12px] sm:leading-6" defaultValue={cliente && cliente[query] && cliente[query].url} />
-            </div>
+            </div> */}
             <div className="sm:col-span-3">
                 <label htmlFor="last-name" className="block text-[12px] font-medium leading-6 text-gray-900">Titulo</label>
                 <input type="text" name="titulo" onChange={onChangeHandler} className="block w-full rounded-md border-0 p-1.5 mt-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-[12px] sm:leading-6" defaultValue={cliente && cliente[query] && cliente[query].titulo} />
             </div>
-            <div className="sm:col-span-3">
+            {/* <div className="sm:col-span-3">
                 <label htmlFor="last-name" className="block text-[12px] font-medium leading-6 text-gray-900">Titulo (Ingles)</label>
                 <input type="text" name="tituloEN" onChange={onChangeHandler} className="block w-full rounded-md border-0 p-1.5 mt-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-[12px] sm:leading-6" defaultValue={cliente && cliente[query] && cliente[query].tituloEN} />
-            </div>
+            </div> */}
             <div className="border-b border-gray-900/10 pb-12">
                 <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8">
                     <div className="sm:col-span-3">
@@ -74,14 +74,14 @@ export default function Home() {
                     </div>
                 </div>
             </div>
-            <div className="border-b border-gray-900/10 pb-12">
+            {/* <div className="border-b border-gray-900/10 pb-12">
                 <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8">
                     <div className="sm:col-span-3">
                         <label htmlFor="first-name" className="block text-[12px] font-medium leading-6 text-gray-900">Contenido de texto (Ingles)</label>
                         <TextEditor value={textEditor2} setValue={setTextEditor2} edit={true} ></TextEditor>
                     </div>
                 </div>
-            </div>
+            </div> */}
             <div className="mt-6 flex items-center justify-center gap-x-6">
                 <Button type="submit" theme="Primary">Guardar</Button>
             </div>
