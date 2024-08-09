@@ -88,9 +88,9 @@ export default function Home() {
                         <span className='font-bold uppercase w-[50%]'>
                             {i[1][`title`]}
                         </span>
-                        <Link type='button' className=" bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 rounded-[20px] text-white font-bold py-2 px-4 " href={`/Admin/Edit/AddContent?item=${query}&route=${i[0]}`} >
+                        {/* <Link type='button' className=" bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 rounded-[20px] text-white font-bold py-2 px-4 " href={`/Admin/Edit/AddContent?item=${query}&route=${i[0]}`} >
                             Mas contenido
-                        </Link>
+                        </Link> */}
                     </div>}
                     {itemEdit === i[0] && <div className='space-y-5 pt-10'>
                        
