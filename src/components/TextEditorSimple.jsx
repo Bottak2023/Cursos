@@ -21,7 +21,7 @@ export default function TextEditor({ value, setValue, edit }) {
       // ['blockquote', 'code-block'],
       // [{ 'header': 1 }, { 'header': 2 }],               // custom button values
 
-    //   [{ 'size': ['small', '', 'large'] }],  // custom dropdown
+      [{ 'size': ['small', '', 'large'] }],  // custom dropdown
 
       // [{ 'size': ['Config'] }],  // custom dropdown
       // [{ 'font': [] }],

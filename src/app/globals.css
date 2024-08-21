@@ -26,7 +26,6 @@ body {
   min-width: 100vw;
   min-height: 100vh;
   font-size: 12px;
-  font-weight: 300;
 }
 
 p > a {
@@ -36,7 +35,6 @@ p > a {
 
 * {
   box-sizing: border-box;
-  font-weight: 300;
 
 }
 
