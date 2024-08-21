@@ -114,7 +114,7 @@ export default function Home() {
                     </div>
                     {query === 'inicio' && <>
                         <NavSection />
-                        <SectionEdit />
+                        <SectionEdit image={true}/>
                         {/* {option === 'MiniTarjetas' && <MiniTarjetasEdit />} */}
                         {/* {option === 'Tarjetas' && <TarjetasEdit />} */}
                         {/* <TarjetasEdit /> */}
@@ -126,12 +126,19 @@ export default function Home() {
                         {/* {option === 'Tarjetas' && <TarjetasEdit />} */}
                         {/* <TarjetasEdit /> */}
                     </>}
-                    {/* {query !== 'contactos' && query !== 'experiencia' && query === 'solucionesIT' && <>
+                    {query === 'cursos' && <>
+                        <NavSection />
+                        {option === 'Seccion' && <SectionEdit />}
+                        {/* {option === 'MiniTarjetas' && <MiniTarjetasEdit />} */}
+                        {option === 'Tarjetas' && <TarjetasEdit />}
+                        {/* <TarjetasEdit /> */}
+                    </>}
+                    {query !== 'contactos' && query !== 'experiencia' && query === 'solucionesIT' && <>
                         <NavSection />
                         {option === 'Seccion' && <SectionEdit />}
                         {option === 'MiniTarjetas' && <MiniTarjetasEdit />}
                         {option === 'Tarjetas' && <TarjetasEdit4 /> }
-                    </>} */}
+                    </>}
                     {query === 'experiencia' && <>
                         <NavSection2 />
                         {/* {option === 'Seccion' && <SectionEdit />}
