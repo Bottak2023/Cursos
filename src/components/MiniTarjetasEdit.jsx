@@ -61,9 +61,9 @@ export default function Home() {
                     < InputFlotante type="text" name={`ip`} id={`floating_1`} onChange={(e) => onChangeHandler2(e, i[0])} value={data2[i[0]] && data2[i[0]]['ip'] ? data2[i[0]]['ip'] : i[1][`ip`]} required label={'Item principal'} shadow='shadow-white' />
                     < InputFlotante type="text" name={`ic`} id={`floating_2`} onChange={(e) => onChangeHandler2(e, i[0])} value={data2[i[0]] && data2[i[0]]['ic'] ? data2[i[0]]['ic'] : i[1][`ic`]} required label={'Item contenido'} shadow='shadow-white' />
                     
-                    < InputFlotante type="text" name={`ipEN`} id={`floating_1`} onChange={(e) => onChangeHandler2(e, i[0])} value={data2[i[0]] && data2[i[0]]['ipEN'] ? data2[i[0]]['ipEN'] : i[1][`ipEN`]} label={'Item principal ingles'} shadow='shadow-white' />
+                    {/* < InputFlotante type="text" name={`ipEN`} id={`floating_1`} onChange={(e) => onChangeHandler2(e, i[0])} value={data2[i[0]] && data2[i[0]]['ipEN'] ? data2[i[0]]['ipEN'] : i[1][`ipEN`]} label={'Item principal ingles'} shadow='shadow-white' />
                     < InputFlotante type="text" name={`icEN`} id={`floating_2`} onChange={(e) => onChangeHandler2(e, i[0])} value={data2[i[0]] && data2[i[0]]['icEN'] ? data2[i[0]]['icEN'] : i[1][`icEN`]} label={'Item contenido ingles'} shadow='shadow-white' />
-                    
+                     */}
                     
                     <div className="col-span-2 mt-6 flex items-center justify-center gap-x-6">
                         <Button type="button" theme="Danger" click={(e) => deleteHandler(e, `Cliente/${query}/miniTarjetas/${i[0]}`, i[0])}>Eliminar</Button>

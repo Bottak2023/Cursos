@@ -60,11 +60,13 @@ export default function Home() {
           <img src="/favicon.png" className='min-w-[200px] w-[15vw]' alt="User" />
         </div>
 
-        <div className='relative   z-10  grid grid-cols-2 sm:grid-cols-3 '>
+        <div className='relative   z-10  grid grid-cols-2 sm:grid-cols-3 justify-items-center'>
+          <Button url='inicio' src="/icons/HOME.png" >Inicio</Button>
+          <Button url='acerca' src="/icons/HOME.png" >Acerca de</Button>
+
           <Button url='cursos' src="/icons/TERRESTRE.png" >Cursos  </Button>
 
-          {/* <Button url='inicio' src="/icons/HOME.png" >Inicio</Button>
-          <Button url='terrestre' src="/icons/TERRESTRE.png" >Transporte Terrestre  </Button>
+          {/* <Button url='terrestre' src="/icons/TERRESTRE.png" >Transporte Terrestre  </Button>
           <Button url='maritimo' src="/icons/MARITIMO.png" > Transporte Maritimo  </Button>
           <Button url='aereo' src="/icons/AEREO.png" > Transporte Aereo</Button>
           <Button url='despachos' src="/icons/DESPACHO ADUANERO.png" > Despachos Aduaneros  </Button>

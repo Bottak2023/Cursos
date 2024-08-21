@@ -69,14 +69,14 @@ export default function Home() {
                             <label htmlFor="first-name" className="block text-[12px] font-medium leading-6 text-gray-900">Item contenido</label>
                             <input type="text" name={`ic`} onChange={(e) => onChangeHandler2(e)} className="block w-full rounded-md border-0 p-1.5 mt-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-[12px] sm:leading-6" defaultValue={data[`ic`]} />
                             <br />
-                            <br />
-                            <br />
+                            {/* <br />
+                            <br /> */}
                             
-                            <label htmlFor="first-name" className="block text-[12px] font-medium leading-6 text-gray-900">Item principal ingles</label>
+                            {/* <label htmlFor="first-name" className="block text-[12px] font-medium leading-6 text-gray-900">Item principal ingles</label>
                             <input type="text" name={`ipEN`} onChange={(e) => onChangeHandler2(e)} className="block w-full rounded-md border-0 p-1.5 mt-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-[12px] sm:leading-6" defaultValue={data[`ipEN`]} />
                             <label htmlFor="first-name" className="block text-[12px] font-medium leading-6 text-gray-900">Item contenido ingles</label>
                             <input type="text" name={`icEN`} onChange={(e) => onChangeHandler2(e)} className="block w-full rounded-md border-0 p-1.5 mt-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-[12px] sm:leading-6" defaultValue={data[`icEN`]} />
-                        
+                         */}
                             <div className="mt-6 flex items-center justify-center gap-x-6">
                                 <Button type="submit" theme="Primary">Guardar</Button>
                             </div>

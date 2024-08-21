@@ -292,7 +292,7 @@ export default function Home() {
         <div className='absolute top-0  w-full min-h-[100vh] h-full object-cover z-10  '></div>
 
         <div className='relative min-h-[100vh] h-auto   w-full lg:pt-[70px] pb-0 flex flex-col justify-center lg:flex-row items-center lg:justify-around  z-20' style={{ background: '-gradient(to bottom, #000000,  #000000c7, #00000050' }}>
-          <img src='/perfil.png' className=' relative my-[70px] inline-block w-[80vw] h-[80vw]    lg:w-[35vw] lg:h-[70vh]  object-contain object-center ' />
+          <img src={cliente?.inicio?.url ? cliente?.inicio?.url: ''} className=' relative my-[70px] inline-block w-[80vw] h-[80vw]    lg:w-[35vw] lg:h-[70vh]  object-contain object-center ' />
           <div className='relative  w-[95%] lg:w-[40%] bg-[#111a3396] lg:bg-[#111a33d0] p-10 lg:p-5 '>
 
             <div className='   font-bold'>
@@ -318,25 +318,25 @@ export default function Home() {
             </div>
             <br />
             <div className='relative bg-[#ffffff] rounded-[10px] p-5 z-30' >
-
-              {(hash !== '#FCL' && hash !== '#FTL') && <form className="max-w-md w-full flex  mx-auto pt-5 space-y-3" onSubmit={filterTracking}>
-                <div className="w-full text-[16px]">
-
-                  <img src="/icons/right.png" className='h-[20px] w-[20px] mr-5 inline' alt="" /> Educación Financiera <br />
-                  <img src="/icons/right.png" className='h-[20px] w-[20px] mr-5 inline' alt="" /> Oportunidades de Inversión <br />
-                  <img src="/icons/right.png" className='h-[20px] w-[20px] mr-5 inline' alt="" /> Seguridad en Transacciones <br />
-                  <img src="/icons/right.png" className='h-[20px] w-[20px] mr-5 inline' alt="" /> Adopción Tecnológica <br />
-                  <img src="/icons/right.png" className='h-[20px] w-[20px] mr-5 inline' alt="" /> Flexibilidad y Accesibilidad <br />
-                </div>
-              </form>}
+              <ScrollAnimation animateIn='bounceInRight'
+                animateOut='bounceOutLeft'
+                initiallyVisible={true}
+              >
+                <h3 className='text-[20px] text-center font-medium  py-5'>{cliente?.inicio?.titulo}</h3>
+              </ScrollAnimation>
 
 
+              <ScrollAnimation animateIn='bounceInRight'
+                animateOut='bounceOutLeft'
+                initiallyVisible={true}
+              >
 
-              <br />
-
-
-
-
+                <p className=' text-[16px]  ql-editor'>
+                  {/* <Translator from='es' to={languaje.slice(0, 2).toLowerCase()}> */}
+                  {cliente?.inicio?.content && parse(cliente.inicio.content)}
+                  {/* </Translator> */}
+                </p>
+              </ScrollAnimation>
 
             </div>
             <marquee className="text-white py-5" behavior="" direction="">
@@ -361,22 +361,21 @@ export default function Home() {
         <div className='relative px-5 py-12 w-full flex flex-col  lg:grid lg:grid-cols-2 justify-around items-center     bg-gradient-to-tr from-[#3e3f52dc] via-[#06102bdc] to-[#323147dc]  ' id='Nosotros'>
           <div>
 
-            <Subtitle><h3 className='text-[30px] text-[white] text-center font-medium  py-5'>{languaje === 'Español' ? 'Acerca de' : 'About  Us'}</h3></Subtitle>
+            <Subtitle><h3 className='text-[30px] text-[white] text-center font-medium  py-5'>{cliente.acerca.titulo}</h3></Subtitle>
             <ScrollAnimation animateIn='bounceInRight'
               animateOut='bounceOutLeft'
               initiallyVisible={true}
             >
               <p className=' text-[16px] text-[white] ql-editor'>
-                {/* <Translator from='es' to={languaje.slice(0, 2).toLowerCase()}>
-                  {parse(cliente.inicio.content)}
-                </Translator> */}
-                BOTTAK es una innovadora plataforma de aprendizaje online dedicada a ofrecer educación de vanguardia en el ámbito de las criptomonedas y la tecnología blockchain. Nuestro objetivo es brindarte una experiencia educativa única y enriquecedora que combine flexibilidad, accesibilidad y contenido de alta calidad.
+                {/* <Translator from='es' to={languaje.slice(0, 2).toLowerCase()}> */}
+                {cliente?.acerca?.content && parse(cliente.acerca.content)}
+                {/* </Translator> */}
               </p>
             </ScrollAnimation>
 
           </div>
           <div className='w-full text-[white] grid grid-cols-2 gap-5 py-12'>
-            {Tarjetas.map((i, index) => <MiniTarjeta e1={i[`ip`]} e2={i[`ic`]} />)}
+            {cliente?.acerca?.miniTarjetas && cliente.acerca.miniTarjetas !== undefined && Object.values(cliente.acerca.miniTarjetas).map((i, index) => <MiniTarjeta e1={i[`ip`]} e2={i[`ic`]} />)}
           </div>
 
           {/* <div className='relative block  md:grid md:grid-cols-2 w-[100%] mt-5 ' style={{ with: '100%' }}>
