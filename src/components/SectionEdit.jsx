@@ -8,7 +8,7 @@ import "animate.css/animate.compat.css"
 import TextEditor from '@/components/TextEditor'
 
 
-export default function Home({image}) {
+export default function Home({image, textMaquina}) {
 
     const { user, introVideo, userDB, option, setOption, setUserProfile, setUserSuccess, success, setUserData, postsIMG, setUserPostsIMG, item, cliente, setCliente, cart, setCart, modal, setModal } = useUser()
     const [textEditor, setTextEditor] = useState(undefined)
@@ -86,11 +86,25 @@ export default function Home({image}) {
 
 
 
-            {image== true && <div className="sm:col-span-3">
+            {image== true && <div className="sm:col-span-3 pb-5">
                 <label htmlFor="last-name" className="block text-[12px] font-medium leading-6 text-gray-900">Subir Perfil por URL</label>
                 <input type="text" name="url" onChange={onChangeHandler} className="block w-full rounded-md border-0 p-1.5 mt-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-[12px] sm:leading-6" defaultValue={cliente && cliente[query] && cliente[query].url} />
             </div>}
-            <div className="sm:col-span-3">
+
+            {textMaquina== true && <div className="sm:col-span-3 pb-5">
+                <label htmlFor="last-name" className="block text-[12px] font-medium leading-6 text-gray-900">Texto Dinamico 1</label>
+                <input type="text" name="textMaquina 1" onChange={onChangeHandler} className="block w-full rounded-md border-0 p-1.5 mt-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-[12px] sm:leading-6" defaultValue={cliente && cliente[query] && cliente[query]['textMaquina 1']} />
+            </div>}
+            {textMaquina== true && <div className="sm:col-span-3 pb-5">
+                <label htmlFor="last-name" className="block text-[12px] font-medium leading-6 text-gray-900">Texto Dinamico 2</label>
+                <input type="text" name="textMaquina 2" onChange={onChangeHandler} className="block w-full rounded-md border-0 p-1.5 mt-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-[12px] sm:leading-6" defaultValue={cliente && cliente[query] && cliente[query]['textMaquina 2']} />
+            </div>}
+            {textMaquina== true && <div className="sm:col-span-3 pb-5">
+                <label htmlFor="last-name" className="block text-[12px] font-medium leading-6 text-gray-900">Texto Dinamico 3</label>
+                <input type="text" name="textMaquina 3" onChange={onChangeHandler} className="block w-full rounded-md border-0 p-1.5 mt-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-[12px] sm:leading-6" defaultValue={cliente && cliente[query] && cliente[query]['textMaquina 3']} />
+            </div>}
+
+            <div className="sm:col-span-3 pb-5">
                 <label htmlFor="last-name" className="block text-[12px] font-medium leading-6 text-gray-900">Titulo</label>
                 <input type="text" name="titulo" onChange={onChangeHandler} className="block w-full rounded-md border-0 p-1.5 mt-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-[12px] sm:leading-6" defaultValue={cliente && cliente[query] && cliente[query].titulo} />
             </div>

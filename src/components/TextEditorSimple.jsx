@@ -34,7 +34,7 @@ export default function TextEditor({ value, setValue, edit }) {
 
       // {'size': {'Small': '14px', 'Normal': false, 'Large': '16px', 'Huge': '18px'}}
       ["link"],
-    //   [{ 'color': [] }],          // dropdown with defaults from theme
+      [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
     //   [{ 'script': 'sub' }, { 'script': 'super' }],      // superscript/subscript
 
       [{ 'align': '' }],

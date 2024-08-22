@@ -296,7 +296,7 @@ export default function Home() {
           <div className='relative  w-[95%] lg:w-[40%] bg-[#111a3396] lg:bg-[#111a33d0] p-10 lg:p-5 '>
 
             <div className='   font-bold'>
-              {languaje === 'Español' ? <TextMaquina /> : <TextMaquina2 />}
+              {cliente?.inicio && languaje === 'Español' ? <TextMaquina textDB={[cliente?.inicio['textMaquina 1'] , cliente?.inicio['textMaquina 2'] , cliente?.inicio['textMaquina 3']]}/> : ''}
             </div>
 
 

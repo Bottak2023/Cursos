@@ -33,8 +33,8 @@ export default function TextEditor({ value, setValue, edit }) {
       // text direction
 
       // {'size': {'Small': '14px', 'Normal': false, 'Large': '16px', 'Huge': '18px'}}
-      // ["link", 'image', "video"],
-      // [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+      ["link"],
+      [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
       // [{ 'script': 'sub' }, { 'script': 'super' }],      // superscript/subscript
 
       [{ 'align': '' }],

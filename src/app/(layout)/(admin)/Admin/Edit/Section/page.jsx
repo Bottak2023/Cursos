@@ -114,7 +114,7 @@ export default function Home() {
                     </div>
                     {query === 'inicio' && <>
                         <NavSection />
-                        <SectionEdit image={true}/>
+                        <SectionEdit image={true} textMaquina={true}/>
                         {/* {option === 'MiniTarjetas' && <MiniTarjetasEdit />} */}
                         {/* {option === 'Tarjetas' && <TarjetasEdit />} */}
                         {/* <TarjetasEdit /> */}
