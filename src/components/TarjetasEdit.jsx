@@ -38,7 +38,7 @@ export default function Home() {
             } else {
                 writeUserData(`/Cliente/${query}/tarjetas`, { [i[0]]: db }, setUserSuccess)
             }
-        })
+        })     
     }
 
 
@@ -110,6 +110,8 @@ export default function Home() {
                         < InputFlotante type="text" name={`url`} id={`floating_5`} onChange={(e) => onChangeHandler3(e, i[0])} value={data3[i[0]] && data3[i[0]]['url'] ? data3[i[0]]['url'] : i[1][`url`]} required label={'IMG url'} shadow='shadow-white' />
                        
                        < InputFlotante type="text" name={`title`} id={`floating_6`} onChange={(e) => onChangeHandler3(e, i[0])} value={data3[i[0]] && data3[i[0]]['title'] ? data3[i[0]]['title'] : i[1][`title`]} required label={'Titulo'} shadow='shadow-white' />
+                       < InputFlotante type="text" name={`button`} id={`floating_10`} onChange={(e) => onChangeHandler3(e, i[0])} value={data3[i[0]] && data3[i[0]]['button'] ? data3[i[0]]['button'] : i[1][`button`]} required label={'Texto de boton'} shadow='shadow-white' />
+
                         {/* < InputFlotante type="text" name={`tituloEN`} id={`floating_6`} onChange={(e) => onChangeHandler3(e, i[0])} value={data3[i[0]] && data3[i[0]]['tituloEN'] ? data3[i[0]]['tituloEN'] : i[1][`tituloEN`]} required label={'Titulo Ingles'} shadow='shadow-white' /> */}
                         <label htmlFor="first-name" className="block text-[12px] font-medium leading-6 text-gray-900">Descripción</label>
                         <TextEditorSimple value={i[1][`paragraph`]} setValue={(e) => onChangeHandler4(e, i[0])} edit={true} ></TextEditorSimple>

@@ -81,7 +81,7 @@ export default function TextEditor({ value, setValue, edit }) {
 
 
 
-  return <div style={{ zIndex: '100000000000000000000000' }}>
+  return <div className='ql-editor ' style={{ zIndex: '100000000000000000000000' }}>
     {
       edit
         ?

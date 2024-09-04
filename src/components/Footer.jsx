@@ -3,50 +3,38 @@ import { useUser } from '@/context/Context'
 import Slider from '@/components/Slider'
 import Button from '@/components/Button'
 import { useRouter, usePathname } from 'next/navigation';
+import { useState } from 'react';
 
 export default function Home() {
-  const { cliente, languaje } = useUser()
+  const { cliente, languaje, setUserSuccess } = useUser()
+  const [email, setEmail] = useState({mensaje: ''})
   const router = useRouter()
   const pathname = usePathname()
 
+  function handlerOnChange(e) {
+    setEmail({ ...email, [e.target.name]: e.target.value })
+  }
+  async function sendEmail(e) {
+    e.preventDefault()
+    setUserSuccess('Enviando mensaje')
+    await fetch(`/api/sendEmail`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(email)
+    })
+    setEmail({ ...email, mensaje: 'MENSAJE ENVIADO, si tienes alguna otra consulta no dudes en escribirnos... 😄' })
 
+    setUserSuccess('')
+
+  }
   return (
     <footer className="relative w-screen  text-center text-white  lg:pb-0 z-20" id="contactos"
 
 
 
     >
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -63,37 +51,7 @@ export default function Home() {
       >
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         <div className='overflow-hidden  '>
-
-
-
-
-
-
-
 
           <div class="mt-6 mx-auto bg-[#111a33d0] rounded-lg">
 
@@ -143,21 +101,21 @@ export default function Home() {
                 <p class="text-3xl font-semibold text-gray-800">Atencion al cliente</p>
 
 
-                <form class="mt-8 space-y-4">
-                  <input type='text' placeholder='Nombre'
-                    class="w-full rounded-lg py-3 px-4 text-gray-800 text-[14px] outline-[#353535] shadow-xl" />
-                  <input type='email' placeholder='Email'
-                    class="w-full rounded-lg py-3 px-4 text-gray-800 text-[14px] outline-[#353535] shadow-xl" />
-                  <input type='text' placeholder='Referencia'
-                    class="w-full rounded-lg py-3 px-4 text-gray-800 text-[14px] outline-[#353535] shadow-xl" />
-                  <textarea placeholder='Mensaje' rows="6"
+                <form class="mt-8 space-y-4" onSubmit={sendEmail}>
+                  <input type='text' name='nombre' onChange={handlerOnChange} placeholder='Nombre'
+                    class="w-full rounded-lg py-3 px-4 text-gray-800 text-[14px] outline-[#353535] shadow-xl" required />
+                  <input type='email' name='correo' onChange={handlerOnChange} placeholder='Email'
+                    class="w-full rounded-lg py-3 px-4 text-gray-800 text-[14px] outline-[#353535] shadow-xl" required />
+                  <input type='text' name='referencia' onChange={handlerOnChange} placeholder='Referencia'
+                    class="w-full rounded-lg py-3 px-4 text-gray-800 text-[14px] outline-[#353535] shadow-xl" required />
+                  <textarea placeholder='Mensaje' value={email.mensaje} name='mensaje' onChange={handlerOnChange} rows="6" required
                     class="w-full rounded-lg px-4 text-gray-800 text-[14px] pt-3 outline-none shadow-xl border-transparent focus:border-transparent focus:ring-0"></textarea>
-                  <button type='button'
+                  <button
                     class="text-white bg-[#353535] hover:bg-[#353535e2] tracking-wide rounded-lg text-[14px] px-4 py-3 flex items-center justify-center w-full !mt-6">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" fill='#fff' class="mr-2" viewBox="0 0 548.244 548.244">
                       <path fill-rule="evenodd" d="M392.19 156.054 211.268 281.667 22.032 218.58C8.823 214.168-.076 201.775 0 187.852c.077-13.923 9.078-26.24 22.338-30.498L506.15 1.549c11.5-3.697 24.123-.663 32.666 7.88 8.542 8.543 11.577 21.165 7.879 32.666L390.89 525.906c-4.258 13.26-16.575 22.261-30.498 22.338-13.923.076-26.316-8.823-30.728-22.032l-63.393-190.153z" clip-rule="evenodd" data-original="#000000" />
                     </svg>
-                    Send Message
+                    Enviar mensaje
                   </button>
                 </form>
               </div>
@@ -166,39 +124,39 @@ export default function Home() {
 
 
             <div className="w-full px-6 pt-6 flex justify-center bg-[#272b3db7]">
-          <div className="mb-1 flex justify-center">
-            <a
-              href={cliente.contactos && cliente.contactos.facebook ? cliente.contactos.facebook : '#'}
-              target='_blank'
-              type="button"
-              className="m-1 h-9 w-9 relative flex items-center justify-center rounded-full border-2 border-white uppercase leading-normal text-white transition duration-150 ease-in-out hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0"
-              data-te-ripple-init
-              data-te-ripple-color="light">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="mx-auto h-full w-4"
-                fill="currentColor"
-                viewBox="0 0 24 24">
-                <path
-                  d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" />
-              </svg>
-            </a>
-            <a
-              href={cliente.contactos && cliente.contactos.twiter ? cliente.contactos.twiter : '#'}
-              type="button"
-              className="m-1 h-9 w-9 flex items-center justify-center  rounded-full border-2 border-white uppercase leading-normal text-white transition duration-150 ease-in-out hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0"
-              data-te-ripple-init
-              data-te-ripple-color="light">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="mx-auto h-full w-4"
-                fill="currentColor"
-                viewBox="0 0 24 24">
-                <path d="M19.1696 5.13274C19.0076 5.04902 18.85 4.95725 18.6972 4.85776C18.2528 4.564 17.8454 4.21786 17.4837 3.82681C16.5788 2.79136 16.2408 1.74091 16.1163 1.00545H16.1213C16.0173 0.39498 16.0603 0 16.0668 0H11.945V15.9382C11.945 16.1522 11.945 16.3637 11.936 16.5727C11.936 16.5987 11.9335 16.6227 11.932 16.6507C11.932 16.6622 11.932 16.6742 11.9295 16.6862V16.6952C11.886 17.267 11.7027 17.8194 11.3957 18.3038C11.0886 18.7882 10.6672 19.1897 10.1686 19.473C9.64888 19.7687 9.06108 19.9238 8.46317 19.923C6.54276 19.923 4.98634 18.3571 4.98634 16.4232C4.98634 14.4893 6.54276 12.9234 8.46317 12.9234C8.82669 12.923 9.18798 12.9802 9.53361 13.0928L9.53861 8.89606C8.48935 8.76052 7.42338 8.84391 6.40795 9.14096C5.39253 9.43802 4.44969 9.94229 3.63891 10.622C2.92847 11.2392 2.33121 11.9758 1.87399 12.7984C1.7 13.0983 1.04354 14.3038 0.96404 16.2602C0.914043 17.3706 1.24753 18.5211 1.40652 18.9966V19.0066C1.50651 19.2865 1.89399 20.242 2.52546 21.0474C3.03466 21.6935 3.63625 22.2611 4.31087 22.7319V22.7219L4.32087 22.7319C6.31627 24.0878 8.52866 23.9988 8.52866 23.9988C8.91164 23.9833 10.1946 23.9988 11.6515 23.3083C13.2674 22.5429 14.1874 21.4024 14.1874 21.4024C14.7751 20.721 15.2424 19.9444 15.5693 19.106C15.9423 18.1256 16.0668 16.9497 16.0668 16.4797V8.0241C16.1168 8.0541 16.7828 8.49458 16.7828 8.49458C16.7828 8.49458 17.7422 9.10955 19.2391 9.51003C20.3131 9.79501 21.76 9.85501 21.76 9.85501V5.76321C21.253 5.81821 20.2236 5.65822 19.1696 5.13274Z" fill="white" />
-              </svg>
-            </a>
+              <div className="mb-1 flex justify-center">
+                <a
+                  href={cliente.contactos && cliente.contactos.facebook ? cliente.contactos.facebook : '#'}
+                  target='_blank'
+                  type="button"
+                  className="m-1 h-9 w-9 relative flex items-center justify-center rounded-full border-2 border-white uppercase leading-normal text-white transition duration-150 ease-in-out hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0"
+                  data-te-ripple-init
+                  data-te-ripple-color="light">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="mx-auto h-full w-4"
+                    fill="currentColor"
+                    viewBox="0 0 24 24">
+                    <path
+                      d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" />
+                  </svg>
+                </a>
+                <a
+                  href={cliente.contactos && cliente.contactos.twiter ? cliente.contactos.twiter : '#'}
+                  type="button"
+                  className="m-1 h-9 w-9 flex items-center justify-center  rounded-full border-2 border-white uppercase leading-normal text-white transition duration-150 ease-in-out hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0"
+                  data-te-ripple-init
+                  data-te-ripple-color="light">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="mx-auto h-full w-4"
+                    fill="currentColor"
+                    viewBox="0 0 24 24">
+                    <path d="M19.1696 5.13274C19.0076 5.04902 18.85 4.95725 18.6972 4.85776C18.2528 4.564 17.8454 4.21786 17.4837 3.82681C16.5788 2.79136 16.2408 1.74091 16.1163 1.00545H16.1213C16.0173 0.39498 16.0603 0 16.0668 0H11.945V15.9382C11.945 16.1522 11.945 16.3637 11.936 16.5727C11.936 16.5987 11.9335 16.6227 11.932 16.6507C11.932 16.6622 11.932 16.6742 11.9295 16.6862V16.6952C11.886 17.267 11.7027 17.8194 11.3957 18.3038C11.0886 18.7882 10.6672 19.1897 10.1686 19.473C9.64888 19.7687 9.06108 19.9238 8.46317 19.923C6.54276 19.923 4.98634 18.3571 4.98634 16.4232C4.98634 14.4893 6.54276 12.9234 8.46317 12.9234C8.82669 12.923 9.18798 12.9802 9.53361 13.0928L9.53861 8.89606C8.48935 8.76052 7.42338 8.84391 6.40795 9.14096C5.39253 9.43802 4.44969 9.94229 3.63891 10.622C2.92847 11.2392 2.33121 11.9758 1.87399 12.7984C1.7 13.0983 1.04354 14.3038 0.96404 16.2602C0.914043 17.3706 1.24753 18.5211 1.40652 18.9966V19.0066C1.50651 19.2865 1.89399 20.242 2.52546 21.0474C3.03466 21.6935 3.63625 22.2611 4.31087 22.7319V22.7219L4.32087 22.7319C6.31627 24.0878 8.52866 23.9988 8.52866 23.9988C8.91164 23.9833 10.1946 23.9988 11.6515 23.3083C13.2674 22.5429 14.1874 21.4024 14.1874 21.4024C14.7751 20.721 15.2424 19.9444 15.5693 19.106C15.9423 18.1256 16.0668 16.9497 16.0668 16.4797V8.0241C16.1168 8.0541 16.7828 8.49458 16.7828 8.49458C16.7828 8.49458 17.7422 9.10955 19.2391 9.51003C20.3131 9.79501 21.76 9.85501 21.76 9.85501V5.76321C21.253 5.81821 20.2236 5.65822 19.1696 5.13274Z" fill="white" />
+                  </svg>
+                </a>
 
-            {/* <a
+                {/* <a
               href={cliente.contactos && cliente.contactos.gmail ? cliente.contactos.gmail : '#'}
               type="button"
               className="m-1 h-9 w-9 rounded-full border-2 border-white uppercase leading-normal text-white transition duration-150 ease-in-out hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0"
@@ -216,50 +174,50 @@ export default function Home() {
               </svg>
             </a> */}
 
-            <a
-              href={cliente.contactos && cliente.contactos.instagram ? cliente.contactos.instagram : '#'}
-              type="button"
-              className="m-1 h-9 w-9 flex items-center justify-center  rounded-full border-2 border-white uppercase leading-normal text-white transition duration-150 ease-in-out hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0"
-              data-te-ripple-init
-              data-te-ripple-color="light">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="mx-auto h-full w-4"
-                fill="currentColor"
-                viewBox="0 0 24 24">
-                <path
-                  d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-              </svg>
-            </a>
+                <a
+                  href={cliente.contactos && cliente.contactos.instagram ? cliente.contactos.instagram : '#'}
+                  type="button"
+                  className="m-1 h-9 w-9 flex items-center justify-center  rounded-full border-2 border-white uppercase leading-normal text-white transition duration-150 ease-in-out hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0"
+                  data-te-ripple-init
+                  data-te-ripple-color="light">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="mx-auto h-full w-4"
+                    fill="currentColor"
+                    viewBox="0 0 24 24">
+                    <path
+                      d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                  </svg>
+                </a>
 
-            <a
-              href={cliente.contactos && cliente.contactos.linkedin ? cliente.contactos.linkedin : '#'}
-              type="button"
-              className="m-1 h-9 w-9 flex items-center justify-center  rounded-full border-2 border-white uppercase leading-normal text-white transition duration-150 ease-in-out hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0"
-              data-te-ripple-init
-              data-te-ripple-color="light">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="mx-auto h-full w-4"
-                fill="currentColor"
-                viewBox="0 0 24 24">
-                <path
-                  d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z" />
-              </svg>
-            </a>
+                <a
+                  href={cliente.contactos && cliente.contactos.linkedin ? cliente.contactos.linkedin : '#'}
+                  type="button"
+                  className="m-1 h-9 w-9 flex items-center justify-center  rounded-full border-2 border-white uppercase leading-normal text-white transition duration-150 ease-in-out hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0"
+                  data-te-ripple-init
+                  data-te-ripple-color="light">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="mx-auto h-full w-4"
+                    fill="currentColor"
+                    viewBox="0 0 24 24">
+                    <path
+                      d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z" />
+                  </svg>
+                </a>
 
-          </div>
+              </div>
 
-        </div>
+            </div>
 
-        <div
-          className="p-4 text-center "
-          style={{ backgroundColor: "rgba(0, 0, 0, 0.2)" }}>
-          <a className="text-whitehite underline" href="https://swoou.com/"
-          > Bottak LLC </a> 2024
+            <div
+              className="p-4 text-center "
+              style={{ backgroundColor: "rgba(0, 0, 0, 0.2)" }}>
+              <a className="text-whitehite underline" href="https://swoou.com/"
+              > Bottak LLC </a> 2024
 
 
-        </div>
+            </div>
 
 
           </div>

@@ -6,7 +6,9 @@ import { useEffect, useState } from 'react'
 import Button from '@/components/Button'
 import "animate.css/animate.compat.css"
 import TextEditor from '@/components/TextEditor'
-
+import 'react-quill/dist/quill.snow.css';
+import 'react-quill/dist/quill.bubble.css';
+import 'react-quill/dist/quill.core.css';
 
 export default function Home({image, textMaquina}) {
 
@@ -115,7 +117,7 @@ export default function Home({image, textMaquina}) {
             <div className="border-b border-gray-900/10 pb-12">
                 <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8">
                     <div className="sm:col-span-3">
-                        <label htmlFor="first-name" className="block text-[12px] font-medium leading-6 text-gray-900">Contenido de texto</label>
+                        <label htmlFor="first-name" className="block text-[14px] font-medium leading-6 text-gray-900">Contenido de texto</label>
                         <TextEditor value={textEditor} setValue={setTextEditor} edit={true} ></TextEditor>
                     </div>
                 </div>

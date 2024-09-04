@@ -91,7 +91,7 @@ console.log(filter)
                         </thead>
                         <tbody>
 
-                            {temporal && temporal !== undefined && Object.values(temporal).map((i, index) => {
+                            {temporal && temporal !== undefined && Object.values(temporal).filter(i=>i.rol && i.rol !== undefined && i.rol !== 'Admin').map((i, index) => {
                                 return  i.nombre.toLowerCase().includes(filter.toLowerCase()) && <tr className="bg-white border-b  hover:bg-gray-50 " key={index}>
 
                                     <th scope="row" className="flex items-center px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">

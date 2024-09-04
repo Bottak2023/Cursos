@@ -14,7 +14,7 @@ function Home({ children }) {
 
   return (
     <>
-       {success === 'Change' &&  <Loader>ghfhfhj</Loader>}
+       {success === 'Enviando mensaje' &&  <Loader>Enviando mensaje</Loader>}
 
           {modal === 'REGISTRATE' && <Modal onClickTrue={() =>{ router.push('/SignUp'); setModal('')}} textTrue='Registrarme' theme='success' textFalse='Cancelar' onClickFalse={() => setModal('')}>Registrate o Inicia Sesión para utilizar nuestras herramientas gratis</Modal>}
         {children}

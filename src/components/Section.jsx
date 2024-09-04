@@ -11,29 +11,14 @@ import Link from 'next/link'
 import Button from '@/components/Button'
 import Subtitle from '@/components/Subtitle'
 import MiniTarjeta from '@/components/MiniTarjeta'
-import { glosario } from '@/db'
-import Footer from '@/components/Footer'
-import TextMaquina from '@/components/TextMaquina'
 import { useRouter } from 'next/navigation';
-import AwesomeSlider from 'react-awesome-slider';
-import withAutoplay from 'react-awesome-slider/dist/autoplay';
 import ScrollAnimation from 'react-animate-on-scroll';
 import "animate.css/animate.compat.css"
 import 'react-awesome-slider/dist/styles.css';
-import InputEspecial from '@/components/InputEspecial'
-import QRscanner from '@/components/QRscanner'
-import { QRreaderUtils } from '@/utils/QRreader'
-import InputFlotante from '@/components/InputFlotante'
-import { generateUUID } from '@/utils/UIDgenerator'
-import SelectSimple from '@/components/SelectSimple'
-import priceFTL from '@/db/FTL.json'
-import mercancias from '@/db/mercancias.json'
 import 'react-quill/dist/quill.snow.css';
 import 'react-quill/dist/quill.bubble.css';
 import 'react-quill/dist/quill.core.css';
 import dynamic from 'next/dynamic'
-import { equipoDB, mercanciaDB, tipoDeUnidadDB } from '@/db/arrDB'
-import { getTranslate } from '@/utils/GetTranslate'
 import { Translator, getTranslation } from '@miracleufo/react-g-translator';
 // import parse from 'html-react-parser';
 const InvoicePDF = dynamic(() => import("@/components/CotizacionPDF"), {
@@ -86,7 +71,7 @@ function Componente3({ title, image, paragraph, id, route, hash, titleEN, paragr
         <img src={image} className="relative w-[150px] md:min-h-[40%] lg:max-w-[200px] object-contain p-5" alt="" />
         <div className="relative w-full bg-gradient-to-t md:min-h-[45%] from-[#ffffffbe] via-[#00195cbe] to-[#ececec] space-y-5 p-5 py-5 rounded-r-[15px] lg:rounded-t-[0]  lg:rounded-b-[15px]">
           <h4 className="w-full text-left font-medium border-b-[3px] text-white pb-5 pl-0 ml-0 border-[#ffffff] p-5">{languaje === 'English' && titleEN ? titleEN : title}</h4>
-          <p className="relative text-white "  >
+          <p className="relative text-white  ql-editor  "  >
             {/* {languaje === 'English' && paragraphEN
               ? paragraphEN !== undefined && parse(paragraphEN)
               : paragraph !== undefined && parse(paragraph)
@@ -106,7 +91,7 @@ function Componente3({ title, image, paragraph, id, route, hash, titleEN, paragr
 
 }
 
-function Componente2({ title, image, paragraph, id, route, titleEN, paragraphEN }) {
+function Componente2({ title, image, paragraph, id, route, titleEN, paragraphEN, button}) {
   const { cliente, languaje } = useUser()
 
   const router = useRouter()
@@ -121,33 +106,31 @@ function Componente2({ title, image, paragraph, id, route, titleEN, paragraphEN 
 
 
   return (
-    <Translator from='es' to={languaje.slice(0, 2).toLowerCase()}>
-      <div className='relative w-full h-full   bg-[#ffffffcb] my-5 md:w-[30vw]   lg:text-[18px] lg:mx-5 rounded-[15px] overflow-hidden'>
+      <div className='relative w-full   bg-[#ffffffcb] my-5 md:w-[30vw]   lg:text-[18px] lg:mx-5 rounded-[15px] overflow-hidden'>
         <img src={image} className="relative max-h-[90vw] md:w-[30vw] overflow-hidden md:h-[25vw] block w-full object-cover rounded-t-[15px] " alt="" />
-        <div className="relative  w-full h-full  bg-gradient-to-tr from-[#3e3f52dc] via-[#06102bdc] to-[#323147dc]  space-y-5 px-5 py-5  lg:rounded-t-[0]  rounded-b-[15px]">
+        <div className="relative  w-full  h-full bg-gradient-to-tr from-[#3e3f52dc] via-[#06102bdc] to-[#323147dc]  space-y-5 px-5 py-5  lg:rounded-t-[0]  rounded-b-[15px]">
           <h4 className="w-full text-left font-medium border-b-[3px] text-white pb-5 pl-0 ml-0 border-[#ffffff] p-5">{languaje === 'English' && titleEN ? titleEN : title}</h4>
-          <p className="relative text-white md:w-[15vw] lg:w-[20vw]">
+         {paragraph !== undefined && <div className="relative text-[12px] text-white ql-editor  w-full" >
             {/* {languaje === 'English' && paragraphEN
               ? `${extractContent(paragraphEN).split(' ').slice(0, 10).toString().replaceAll(',', ' ')}...`
               : `${extractContent(paragraph).split(' ').slice(0, 10).toString().replaceAll(',', ' ')}...`}
            */}
 
 
-            {paragraph !== undefined && parse(paragraph)}
-          </p>
+            {parse(paragraph)}
+          </div>}
           <div className=" relative bottom-0 flex mt-5 mb-10 justify-end  w-[100%]">
 
             {/* <button className="block bg-[#ffd900] px-3 text-[12px] border text-center font-medium py-2 m-1  
          cursor-pointer rounded-[5px]"  onClick={() => router.push(`/Galeria?query=${id}&item=${route}`)}>{languaje === 'Español' ? 'Inscribirse' : 'Know more'}</button>
          */}
         <button className="block bg-[#ffd900] px-3 text-[12px] border text-center font-medium py-2 m-1  
-         cursor-pointer rounded-[5px]"  onClick={() => router.push(`/Register?curso=${id}`)}>{languaje === 'Español' ? 'Inscribirse' : 'Know more'}</button>
+         cursor-pointer rounded-[5px]"  onClick={() => router.push(`/Register?curso=${id}`)}>{button}</button>
         
         
           </div>
         </div>
       </div>
-    </Translator>
   )
 }
 
@@ -244,7 +227,7 @@ export default function Section({ subtitle, subtitleEN, description, description
         {cliente && cliente[id] && cliente[id].tarjetas && Object.entries(tarjetas).map((i, index) => {
           return <div className=' w-full  md:w-auto p-5 z-50' key={index}>
             {/* {id !== 'experiencia' && id !== 'solucionesIT' && <Componente route={i[0]} id={id} db={i[1]} title={i[1].title} image={i[1].url} paragraph={i[1].paragraph} paragraphEN={i[1].paragraphEN} />} */}
-            {id === 'cursos' && <Componente2 route={i[0]} id={i[0]} db={i[1]} title={i[1].title} image={i[1].url} paragraph={i[1].paragraph} paragraphEN={i[1].paragraphEN} />}
+            {id === 'cursos' && <Componente2 route={i[0]} id={i[0]} db={i[1]} title={i[1].title} image={i[1].url} paragraph={i[1].paragraph} paragraphEN={i[1].paragraphEN} button={i[1].button? i[1].button:'Button'}/>}
             {id === 'cursdsfos' && <Componente3 route={i[0]} hash={i[1].hash} id={id} db={i[1]} title={i[1].title} image={i[1].url} paragraph={i[1].paragraph} paragraphEN={i[1].paragraphEN} />}
 
           </div>

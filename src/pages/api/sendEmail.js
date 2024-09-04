@@ -1,7 +1,7 @@
 const nodemailer = require('nodemailer');
 
 export default function handler(req, res) {
-
+    console.log(req.body)
     const transporter = nodemailer.createTransport({
         service: "Gmail",
         auth: {
@@ -13,19 +13,18 @@ export default function handler(req, res) {
     async function handlerSendEmail() {
         try {
             await transporter.sendMail({
-                from: 'info.bottak@gmail.com',
-                to: req.body.email,
-                subject: ` Reporte de transaccion: estado: ${req.body.estado}`,
-                text: req.body.data,
-                // html: '<p></p>',
-
-                // attachments: [
-                //     {
-                //         filename: `Cotizacion_${req.body.element}.pdf`,
-                //         content: req.body.pdfBase64.split("base64,")[1],
-                //         encoding: 'base64'
-                //     }
-                // ]
+                from: req.body.correo,
+                to: "info.bottak@gmail.com",
+                subject: `${req.body.correo} : ${req.body.referencia}`,
+                // text: req.body.mensaje,
+                html: `<div>
+                 <p style="font-weight: bold; text-align: center; text-transform:uppercase">${req.body.referencia}</p>
+                 <br/>
+                <p><span style="font-weight: bold">De: ${req.body.nombre}</span> ${req.body.nombre}</p>
+                <p><span style="font-weight: bold">Correo:</span>  ${req.body.correo}</p>
+                <br/>
+                <p><span style="font-weight: bold">Mensaje: </span> ${req.body.mensaje}</p>
+                </div>`,
             });
             return res.json({ msg: 'Send Email SuccessFull' })
         } catch (err) {
