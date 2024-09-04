@@ -23,7 +23,7 @@ function NavSection() {
     useEffect(() => {
         if (window && typeof window !== "undefined") {
             setQuery(window.location.href.split('=')[1])
-            query === 'inicio' && setOption('Seccion')
+             setOption('Seccion')
         }
     }, [cliente])
     return (
