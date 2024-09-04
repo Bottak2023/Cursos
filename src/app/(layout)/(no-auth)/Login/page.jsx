@@ -26,7 +26,7 @@ export default function Home() {
   useEffect(() => {
     if (user === undefined) { onAuth(setUserProfile) }
     if (user && user !== undefined && userDB && userDB !== undefined) { router.replace('/') }
-    if (user && user !== undefined && userDB === null) { router.replace('/Register') }
+    if (user && user !== undefined && userDB === null) { router.replace('/Admin') }
   }, [user, userDB])
 
   return (
